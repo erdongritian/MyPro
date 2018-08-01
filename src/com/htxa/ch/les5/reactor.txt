@@ -1,0 +1,36 @@
+1.通过Reactor模式，可以将用户线程的IO轮询操作状态的工作
+  统一交给handle_events事件循环处理。用户注册事件处理器之后可以
+ 继续执行其它工作（异步的).而Reactor线程负责调用内核的select函数
+ 检查Socket状态，当有Socket被激活了，则通知相应的用户线程
+ （或者执行用户线程的回调函数），执行hangle_event进行数据读取、处理
+ 工作。select函数是阻塞的。
+ 伪代码:
+  class UserEventHandler  extends EventHandler{
+     public void handler_event(){
+         if(can_read(socket))
+         {
+           read(socket,buffer)
+           process(buffer)
+         }
+     }
+  }
+  {
+     Reactor.register(new UserEventHandler());
+  }
+  Reactor
+  {
+     public void handle_event(){
+        while(1){
+          Socket sockets = select();
+          for(Socket socket :sockets)
+          {
+           get_event_hangler(socket).handler_event()
+          }
+        }
+     }
+  }
+  
+  
+2.java中的实现
+ 主要是java.nio的支持
+ java.nio.channels包下的一些类
