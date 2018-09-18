@@ -1,16 +1,18 @@
 package com.htxa.ch.leetcode;
 
+import java.util.ArrayList;
+
 public class MyTest {
     public static void main(String[] args) {
-//        ArrayList list=new ArrayList<>();
-//        list.add(1);
-//        list.add(4);
-//        list.add(9);
-//        list.add(1,3);
-//        System.out.println(list);
-        int i=4;
-        test(i);
-        System.out.println(i);
+        ArrayList list=new ArrayList<>();
+        list.add(1);
+        list.add(4);
+        list.add(9);
+        list.add(1,3);
+        System.out.println(list);
+//        int i=4;
+//        test(i);
+//        System.out.println(i);
 
     }
 

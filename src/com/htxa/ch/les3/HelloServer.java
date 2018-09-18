@@ -23,7 +23,8 @@ public class HelloServer {
 						Object[] args = (Object[])ois.readObject();
 						
 						ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-						Method method = helloService.getClass().getMethod(methodName, paramTypes);
+//						Method method = helloService.getClass().getMethod(methodName, paramTypes);
+						Method method = HelloService.class.getMethod(methodName, paramTypes);
 						Object result = method.invoke(helloService, args);
 						
 						oos.writeObject(result);
