@@ -2,16 +2,16 @@ package com.htxa.ch.leetcode;
 
 import java.util.*;
 
-public class NQueens {
+public class NQueensII {
     public static void main(String[] args) {
-        NQueens nQueens=new NQueens();
-        System.out.println(nQueens.solveNQueens(4));
+        NQueensII nQueens=new NQueensII();
+        System.out.println(nQueens.totalNQueens(4));
     }
 
-    List<List<String>> result=new ArrayList<>();
-    public List<List<String>> solveNQueens(int n) {
+    int totalCount=0;
+    public int totalNQueens(int n) {
         if(n==1){
-            return Arrays.asList(Arrays.asList("Q"));
+            return 1;
         }
 
         for (int i = 0; i < n; i++) {
@@ -23,8 +23,9 @@ public class NQueens {
             M(n-1,n,map,resultSet);
         }
 
-        return result;
+        return totalCount;
     }
+
 
     private void M(int count,int n,Map<Integer,Set<Integer>> map,Set<Integer> resultSet){
 
@@ -38,33 +39,7 @@ public class NQueens {
                     }
                 }
                 if(tag){
-                    resultSet.add(count*10+j);
-
-                    if(resultSet.size()==n){
-                        List<String> list=new ArrayList<>(n);
-                        Map tMap=new HashMap();
-
-                        for(int parms:resultSet){
-                            int x=parms/10;
-                            int y=parms%10;
-
-                            StringBuilder sb=new StringBuilder();
-                            for (int m = 0; m < n; m++) {
-                                if(m==y){
-                                    sb.append("Q");
-                                }else {
-                                    sb.append(".");
-                                }
-                            }
-                            tMap.put(x,sb.toString());
-                        }
-
-                        for (int m = 0; m < n; m++) {
-                            list.add(tMap.get(m).toString());
-                        }
-                        result.add(list);
-                        resultSet.remove(count*10+j);
-                    }
+                    totalCount++;
                 }
             }
         }else {
@@ -87,6 +62,7 @@ public class NQueens {
                     resultSet.remove(count*10+j);
                     map.remove(count);
                 }
+
             }
         }
     }
