@@ -79,7 +79,7 @@ public class GenerateParentheses {
                 y++;
                 characters.add(y,')');
                 y++;
-                x=x+2;
+//                x=x+2;
             }
 
 
