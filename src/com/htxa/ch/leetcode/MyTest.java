@@ -7,9 +7,11 @@ import java.util.ArrayList;
 public class MyTest {
     public static void main(String[] args) {
 
-        NutritionFacts nutritionFacts= new NutritionFacts.Builder(2,3).setCalories(5).build();
-        System.out.println(nutritionFacts);
+//        NutritionFacts nutritionFacts= new NutritionFacts.Builder(2,3).setCalories(5).build();
+//        System.out.println(nutritionFacts);
 
+        int t=8;
+        System.out.println( (int)Math.sqrt(t));
 
 //        char[] strList=new char[1];
 //        strList[0]='a';
